@@ -18,6 +18,26 @@ data$date = as.Date(data$date, format = '%Y-%m-%d')
 
 ```r
 library(dplyr)
+```
+
+```
+## 
+## Attaching package: 'dplyr'
+```
+
+```
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+```
+
+```
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+```
+
+```r
 library(ggplot2)
 ```
 
@@ -29,7 +49,25 @@ hist(stepspd$spd, xlab = 'steps per day',
      main = 'Histogram of steps per day')
 ```
 
-![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5-1.png)
+![plot of chunk unnamed-chunk-3](figure/unnamed-chunk-3-1.png)
+
+```r
+dev.copy(png, 'steps_per_day.png')
+```
+
+```
+## png 
+##   3
+```
+
+```r
+dev.off()
+```
+
+```
+## png 
+##   2
+```
 
 #**3.Mean and median number of steps taken each day**
 
@@ -58,7 +96,25 @@ with(stepspi, plot(interval, spi, type = 'l',
                    main = 'Avg steps per interval averaged across all days'))
 ```
 
-![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7-1.png)
+![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5-1.png)
+
+```r
+dev.copy(png, 'Avg_steps.png')
+```
+
+```
+## png 
+##   3
+```
+
+```r
+dev.off()
+```
+
+```
+## png 
+##   2
+```
 
 #**5.The 5-minute interval that, on average, contains the maximum number of steps**
 
@@ -98,7 +154,25 @@ hist(stepspdna$spd, xlab = 'steps per day',
      main = 'Histogram of steps per day after filling NA values')
 ```
 
-![plot of chunk unnamed-chunk-11](figure/unnamed-chunk-11-1.png)
+![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-9-1.png)
+
+```r
+dev.copy(png, 'steps_per_day_na.png')
+```
+
+```
+## png 
+##   3
+```
+
+```r
+dev.off()
+```
+
+```
+## png 
+##   2
+```
 
 ```r
 print(paste('mean steps per day after imputing NAs', mean(stepspdna$spd), sep = ' = '))
@@ -142,4 +216,22 @@ ggplot(data = stepspina, aes(x = interval, y = spi)) +
       ggtitle('Avg steps per interval averaged across weekday/weekend')
 ```
 
-![plot of chunk unnamed-chunk-14](figure/unnamed-chunk-14-1.png)
+![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-12-1.png)
+
+```r
+dev.copy(png, 'steps_per_interval.png')
+```
+
+```
+## png 
+##   3
+```
+
+```r
+dev.off()
+```
+
+```
+## png 
+##   2
+```

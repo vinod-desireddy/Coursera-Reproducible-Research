@@ -24,6 +24,8 @@ library(ggplot2)
 stepspd = data %>% group_by(date) %>% summarise(spd = sum(steps, na.rm = T))
 hist(stepspd$spd, xlab = 'steps per day',
      main = 'Histogram of steps per day')
+dev.copy(png, 'steps_per_day.png')
+dev.off()
 ```
 
 #**3.Mean and median number of steps taken each day**
@@ -38,6 +40,8 @@ stepspi = data %>% group_by(interval) %>% summarise(spi = mean(steps, na.rm = T)
 with(stepspi, plot(interval, spi, type = 'l',
                    ylab = 'Avg steps per interval',
                    main = 'Avg steps per interval averaged across all days'))
+dev.copy(png, 'Avg_steps.png')
+dev.off()
 ```
 
 #**5.The 5-minute interval that, on average, contains the maximum number of steps**
@@ -64,6 +68,8 @@ stepsna$spi = NULL
 stepspdna = stepsna %>% group_by(date) %>% summarise(spd = sum(steps))
 hist(stepspdna$spd, xlab = 'steps per day',
      main = 'Histogram of steps per day after filling NA values')
+dev.copy(png, 'steps_per_day_na.png')
+dev.off()
 print(paste('mean steps per day after imputing NAs', mean(stepspdna$spd), sep = ' = '))
 print(paste('median number of steps per day after imputing NAs', median(stepspdna$spd), sep = ' = '))
 ```
@@ -89,4 +95,6 @@ ggplot(data = stepspina, aes(x = interval, y = spi)) +
       facet_grid(day~., scales = 'free') +
       ylab('Average steps') +
       ggtitle('Avg steps per interval averaged across weekday/weekend')
+dev.copy(png, 'steps_per_interval.png')
+dev.off()
 ```
